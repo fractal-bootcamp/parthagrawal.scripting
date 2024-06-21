@@ -6,6 +6,7 @@ package cmd
 import (
 	"fmt"
 	"log"
+	"os"
 	"os/exec"
 
 	"github.com/spf13/cobra"
@@ -19,6 +20,11 @@ var viteCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("vite called")
 		fmt.Println(args)
+		if len(args) == 0 {
+			fmt.Println("You gotta specify a title bro")
+			os.Exit(0)
+
+		}
 
 		title := args[0]
 
