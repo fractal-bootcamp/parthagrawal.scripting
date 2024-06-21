@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"fmt"
+
 	"github.com/spf13/cobra"
 )
 
@@ -11,7 +13,7 @@ import (
 // }
 
 var rootCmd = &cobra.Command{
-	Use:   "newweb",
+	Use:   "create-fs",
 	Short: "This is going to, for now, just do an echo command",
 	Long:  "This is going to for now just do an echo command",
 	// Run: func(cmd *cobra.Command, args []string) {
@@ -19,6 +21,8 @@ var rootCmd = &cobra.Command{
 	// },
 	Run: func(cmd *cobra.Command, args []string) {
 		echo()
+		fmt.Println("Executing install...")
+		install_react()
 	},
 }
 
