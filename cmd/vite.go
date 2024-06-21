@@ -1,11 +1,12 @@
 /*
 Copyright © 2024 NAME HERE <EMAIL ADDRESS>
-
 */
 package cmd
 
 import (
 	"fmt"
+	"log"
+	"os/exec"
 
 	"github.com/spf13/cobra"
 )
@@ -13,15 +14,19 @@ import (
 // viteCmd represents the vite command
 var viteCmd = &cobra.Command{
 	Use:   "vite",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Creates a vite app",
+	Long:  `Accepts a name as a parameter to create a vite app`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("vite called")
+		fmt.Println(args)
+
+		install := exec.Command("bun", "create", "vite")
+		output, err := install.Output()
+		if err != nil {
+			log.Println(err)
+		}
+		fmt.Println("Ran install!")
+		fmt.Println(string(output))
 	},
 }
 
