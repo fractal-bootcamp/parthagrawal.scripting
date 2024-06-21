@@ -14,13 +14,15 @@ import (
 // viteCmd represents the vite command
 var viteCmd = &cobra.Command{
 	Use:   "vite",
-	Short: "Creates a vite app",
-	Long:  `Accepts a name as a parameter to create a vite app`,
+	Short: "Creates a React + Typescript vite app",
+	Long:  `Accepts parameters name as a parameter to create a vite app`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("vite called")
 		fmt.Println(args)
 
-		install := exec.Command("bun", "create", "vite")
+		title := args[0]
+
+		install := exec.Command("bun", "create", "vite", title, "--template", "react-ts")
 		output, err := install.Output()
 		if err != nil {
 			log.Println(err)

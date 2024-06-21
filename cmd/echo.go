@@ -8,7 +8,6 @@ import (
 )
 
 func echo() {
-
 	dance := exec.Command("echo", "hello")
 	output, err := dance.Output()
 	if err != nil {
